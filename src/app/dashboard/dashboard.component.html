@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="col-md-12 col-md-offset-3">
+      <div class="card-panel">
+        <h3>Dashboard</h3>
+          <div class="section">
+            <h5>Search course</h5>
+            <div class="row">
+                <div class="col s8">
+                  <select class="form-control" #courses>
+                    <option value="" default>-- Select -- </option>
+                    <option value="1">course 1</option>
+                    <option value="2">course 2</option>
+                  </select>
+                </div>
+                <div class="col s4">
+                    <button class="btn btn-primary" (click)="searchCourse(courses)">Search</button>
+                </div>
+            </div>
+          </div>
+          <div class="divider"></div>
+
+          <div class="section">
+            <h5>Search course</h5>
+            <div class="row">
+              <div class="col s10">
+                <textarea class="form-control" row="5">
+                </textarea>
+                <select class="form-control" #courses
+                  style="margin-top:20px;">
+                  <option value="" default>-- Select -- </option>
+                  <option value="1">course 1</option>
+                  <option value="2">course 2</option>
+                </select>
+                <button class="btn btn-primary" (click)="enrollCourse(courses)"
+                style="margin-top:20px;">
+                  Enroll Me
+                </button>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
