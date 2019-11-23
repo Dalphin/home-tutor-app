@@ -6,7 +6,7 @@
             <h5>Search course</h5>
             <div class="row">
                 <div class="col s8">
-                  <select class="form-control" #courses>
+                  <select class="form-control" (change)="onchangeCourse(courses)" #courses>
                     <option value="" default>-- Select -- </option>
                     <option value="1">course 1</option>
                     <option value="2">course 2</option>
@@ -19,22 +19,26 @@
           </div>
           <div class="divider"></div>
 
-          <div class="section">
-            <h5>Search course</h5>
+          <div class="section" *ngIf="showEnrollSection">
+            <h5>Enroll Course</h5>
             <div class="row">
               <div class="col s10">
-                <textarea class="form-control" row="5">
+                <form #enrollForm="ngForm" (ngSubmit)="enrollCourse(enrollForm)" novalidate>
+                <textarea class="form-control" row="5" name="comments" [(ngModel)]="enrollDetails.comments" #comments="ngModel" required>
                 </textarea>
-                <select class="form-control" #courses
+                <div *ngIf="enrollForm.submitted && !comments.valid">Comment is required.</div>
+                <select class="form-control" name="studentName" [(ngModel)]="enrollDetails.studentName" #studentName="ngModel" required
                   style="margin-top:20px;">
                   <option value="" default>-- Select -- </option>
                   <option value="1">course 1</option>
                   <option value="2">course 2</option>
                 </select>
-                <button class="btn btn-primary" (click)="enrollCourse(courses)"
+                <div *ngIf="enrollForm.submitted && studentName.valid">Student name is required.</div>
+                <button class="btn btn-primary" [disabled]="enrollForm.form.invalid"
                 style="margin-top:20px;">
                   Enroll Me
                 </button>
+              </form>
               </div>
             </div>
           </div>

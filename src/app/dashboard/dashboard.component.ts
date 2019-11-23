@@ -6,18 +6,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  model: any = {};
+  enrollDetails: any = {};
+  showEnrollSection:Boolean = false;
   constructor() { }
 
   ngOnInit() {
   }
 
-  searchCourse(value) {
+  onchangeCourse(value){
     console.info("Value :::: ", value.value);
   }
 
-  enrollCourse(value) {
+  searchCourse(value) {
+    console.info("Value :::: ", value.value);
+    if(value.value == "") {
+      this.showEnrollSection = false;
+      return false;
+    }
+    this.showEnrollSection = true;
+  }
 
+  enrollCourse(form) {
+      console.log(form, " || ", this.enrollDetails)
   }
 
 }
